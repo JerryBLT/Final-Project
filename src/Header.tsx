@@ -74,7 +74,7 @@ export default function Header() {
         <FaCocktail />
         Cocktail
       </Logo>
-      {/* <Nav>
+      { <Nav>
         <NavList>
           <NavItem>
             <NavLink to="/">Home</NavLink>
@@ -86,7 +86,7 @@ export default function Header() {
             <NavLink to="/about">About</NavLink>
           </NavItem>
         </NavList>
-      </Nav> */}
+      </Nav>}
     </HeaderContainer>
   );
 }
