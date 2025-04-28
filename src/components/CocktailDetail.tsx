@@ -47,9 +47,9 @@
                     const ingredient = cocktail[`strIngredient${i + 1}` as keyof Cocktail];
                     const measure = cocktail[`strMeasure${i + 1}` as keyof Cocktail];
                     return ingredient ? (
-                        <StyledListItem key={i}>
-                            {measure} {ingredient}
-                        </StyledListItem>
+                        <li key={i}>
+                            <DrinkText>{measure} {ingredient}</DrinkText>
+                        </li>
                         ) : null;
                     })}
                 </StyledList>
@@ -70,6 +70,11 @@
  // Styled components for the CocktailDetail component
  // container divs 
  const LoadingContainer = styled.div`
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: calc(4px + 1.2vw);    
+    align-items: center;
+    margin-top: 2vh;
+    padding: 2vh 0;
  `;
  
  const CocktailContainer = styled.div`
@@ -79,7 +84,6 @@
 
  const TopSection = styled.div`
     display: flex;
-
     align-items: flex-start;
     gap: 20px;
     flex-wrap: wrap; 
@@ -106,18 +110,18 @@
  `;
  
  const DrinkDetails = styled.h2`
-      font-size: calc(6px + 1vw);   
+      font-size: calc(6px + 1.5vw);   
+      margin: 0 1.7vw; 
  `;
  
  const DrinkText = styled.p`
-     font-size: calc(6px + 1vw);   
+     font-size: calc(6px + 1vw);  
+     margin: 0 1.5vw; 
  `;
  
  // list styles
  const StyledList = styled.ul`
- `;
- 
- const StyledListItem = styled.li`
+    list-style-type: square;
  `;
  
  // image styles
