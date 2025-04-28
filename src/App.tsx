@@ -12,7 +12,6 @@ const AppContainer = styled.div`
   width: 100vw;
   display: flex;
   background: pink;
-  min-height: 100vh;
   min-width: 100vw;
 `;
 
