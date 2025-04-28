@@ -31,4 +31,12 @@ export default function CocktailList({ cocktails }: CocktailListProps) {
 
 // Styled component for the list container where cocktail cards are displayed
 const ListContainer = styled.div`
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: calc(4px + 1.2vw);    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2vh;
+    padding: 2vh 0;
 `;
