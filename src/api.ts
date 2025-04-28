@@ -10,7 +10,7 @@ export const getCocktailById = async (id: string) => {
 
 //This function fetches all cocktails containing a given ingredient
 export const searchByIngredient = async (ingredient: string) => {
-    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingredient}`);
+    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
     const data = await response.json();
     return data;
 }
