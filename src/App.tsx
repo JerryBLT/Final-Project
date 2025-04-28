@@ -24,6 +24,7 @@ const CardGrid = styled.div`
   gap: 2px;
   justify-content: center;
   margin-top: 5vh;
+  min-width: 100vw;
 `;
 
 
