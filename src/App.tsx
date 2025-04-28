@@ -10,6 +10,8 @@ import Header from "./components/Header";
 const AppContainer = styled.div`
   display: flex;
   background: pink;
+  min-height: 100vh;
+  min-width: 100vw;
 `;
 
 const MainContent = styled.div`
