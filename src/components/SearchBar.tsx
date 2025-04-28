@@ -8,11 +8,11 @@ import {Cocktail} from '../interfaces/Cocktail'
 const SearchBarWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #a3a5ff;
+    background-color: #ffb347;
     height: 10vh;
     align-items: center;
     align-self: center;
-    margin: auto;
+    margin: 5vh auto auto auto;
     border-radius: 15px;
     width: 30vw;
 `
@@ -54,7 +54,7 @@ const SubmitButton = styled.button`
 `
 
 
-
+//Takes a useState function as parameter so it can return the results of the search to the parent and be displayed in the other component
 export default function SearchBar({ onResults }: { onResults: (d: Cocktail[]) => void }) {
     //Keeps track of whether the user wants to search by ingredient or by cocktail name
     const [searchType, setSearchType] = useState('ingredient');

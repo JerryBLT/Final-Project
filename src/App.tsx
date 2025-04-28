@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Header from "./compartment/Header";
+import Header from "./components/Header";
 import CocktailCard from "./components/CocktailCard";
 import Modal from "./components/Modal";
-import { Cocktail } from "./interfaces/Type";
+import { Cocktail } from "./interfaces/Cocktail";
+import SearchBar from "./components/SearchBar.tsx";
 
 // Styled Components
 const AppContainer = styled.div`
@@ -53,6 +54,7 @@ export default function App() {
       <Header />
       <AppContainer>
         <MainContent>
+            <SearchBar onResults={setData} />
           <CardGrid>
             {data.map((cocktail) => (
               <CocktailCard key={cocktail.idDrink} data={cocktail} onClick={handleCardClick} />
