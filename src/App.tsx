@@ -4,6 +4,7 @@ import CocktailCard from "./components/CocktailCard";
 import Modal from "./components/Modal";
 import { Cocktail } from "./interfaces/Cocktail";
 import SearchBar from "./components/SearchBar";
+import Header from "./components/Header";
 
 // Styled Components
 const AppContainer = styled.div`
