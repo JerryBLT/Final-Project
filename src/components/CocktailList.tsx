@@ -39,4 +39,5 @@ const ListContainer = styled.div`
     justify-content: space-evenly;
     margin-top: 2vh;
     padding: 2vh 0;
+    min-height: 100vh;
 `;
