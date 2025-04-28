@@ -3,7 +3,6 @@
 import styled from "styled-components";
 // library for the cocktail logo
 import { FaCocktail } from "react-icons/fa";
-import { Link } from "react-router";
 
 const HeaderContainer = styled.header`
   display: flex;
