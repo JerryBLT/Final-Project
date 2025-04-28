@@ -2,7 +2,7 @@
 
 import styled from 'styled-components';
 import {useState} from "react";
-import {searchByName, searchByIngredient} from '../api'
+import {searchByName, searchByIngredient} from '../interfaces/api'
 import {Cocktail} from '../interfaces/Cocktail'
 
 const SearchBarWrapper = styled.div`

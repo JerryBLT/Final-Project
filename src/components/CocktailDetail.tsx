@@ -2,7 +2,7 @@
  // Implemented by Caroline
  import { useEffect, useState } from 'react';
  import { useParams } from 'react-router-dom';
- import { getCocktailById } from '../api.ts';
+ import { getCocktailById } from '../interfaces/api.ts';
  import { Cocktail } from '../interfaces/Cocktail';
  import styled from 'styled-components';
  
@@ -77,14 +77,12 @@ export default CocktailDetail;
 // Styled Components
 
 const Card = styled.div`
-  background: #fff;
+  background: white;
   border-radius: 18px;
-  box-shadow: 0 6px 32px rgba(0,0,0,0.10), 0 1.5px 6px rgba(255,49,49,0.08);
-  max-width: 700px;
   margin: 3vh auto;
-  padding: 2.5rem 2rem;
-  font-family: 'Segoe UI', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-`;
+  padding: 3px;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+ `;
 
 const TopSection = styled.div`
   display: flex;
@@ -95,30 +93,26 @@ const TopSection = styled.div`
   @media (max-width: 900px) {
     flex-direction: column;
     align-items: center;
-    gap: 18px;
   }
 `;
 
 const DrinkImage = styled.img`
   border: 2px solid #FF3131;
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(255,49,49,0.10);
   padding: 8px;
   background: #fff5f5;
   max-width: 220px;
   width: 100%;
-  height: auto;
-`;
+  `;
 
 const Details = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  min-width: 220px;
 `;
 
 const DrinkName = styled.h1`
-  font-size: 2.2rem;
+  font-size: calc(3px + 2vw);
   text-align: center;
   color: #FF3131;
   font-weight: 700;
@@ -129,23 +123,21 @@ const DrinkName = styled.h1`
 const SectionTitle = styled.h2`
   font-size: 1.2rem;
   margin: 1.2rem 0 0.5rem 0;
-  color: #333;
-  font-weight: 600;
+  color: black;
   letter-spacing: 0.03em;
 `;
 
 const Instructions = styled.p`
-  font-size: 1.1rem;
-  background: #f9f9fa;
+  font-size: calc(2px + 2vw);
+  background: white;
   border-radius: 8px;
   padding: 1rem;
   margin-top: 0.5rem;
-  color: #222;
-  line-height: 1.5;
+  color: black;
 `;
 
 const IngredientsSection = styled.div`
-  margin-top: 1.2rem;
+  margin-top: 2px;
 `;
 
 const StyledList = styled.ul`
@@ -155,46 +147,44 @@ const StyledList = styled.ul`
 `;
 
 const StyledListItem = styled.li`
-  margin-bottom: 0.4rem;
+  margin-bottom: 2px;
 `;
 
 const Ingredient = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff0ee;
+  background: pink;
   border-radius: 5px;
-  padding: 0.4em 0.7em;
-  font-size: 1rem;
-  color: #222;
+  padding: 1px;
+  font-size: calc(2px + 2vw);
+  color: black;
 `;
 
 const Measure = styled.span`
   color: #FF3131;
   font-weight: 600;
   margin-left: 1.2em;
-  font-size: 0.98em;
+  font-size: calc(2px + 2vw);
 `;
 
 const DetailRow = styled.div`
-  font-size: 1.05rem;
-  margin-bottom: 0.3rem;
+  font-size: calc(2px + 2vw);
+  margin-bottom: 3px;
 `;
 
 const Label = styled.span`
   color: #FF3131;
   font-weight: 600;
-  margin-right: 0.4em;
 `;
 
 const LoadingContainer = styled.div`
   text-align: center;
-  padding: 3rem 0;
-  font-size: 1.3rem;
+  padding: 10px;
+  font-size: calc(2px + 2vw);
   color: #FF3131;
-  letter-spacing: 0.05em;
 `;
 
-const ErrorContainer = styled(LoadingContainer)`
+const ErrorContainer = styled.div`
   color: #b20000;
 `;
