@@ -1,14 +1,18 @@
+// This component displays a list of cocktails using the CocktailCard component
+// Implemented by Caroline
 import { useNavigate } from 'react-router-dom';
 import CocktailCard from './CocktailCard';
 import { Cocktail } from '../interfaces/Cocktail';
 import styled from 'styled-components';
 
+// Define the props for the CocktailList component
 interface CocktailListProps {
     cocktails: Cocktail[];
 }
 
 export default function CocktailList({ cocktails }: CocktailListProps) {
     const navigate = useNavigate();
+    // Function to handle the click event on a cocktail card, which navigates to the cocktail detail page
     const handleCocktailClick = (id: string) => {
         navigate(`/cocktail/${id}`);
     };
@@ -25,5 +29,6 @@ export default function CocktailList({ cocktails }: CocktailListProps) {
     );
 }
 
+// Styled component for the list container where cocktail cards are displayed
 const ListContainer = styled.div`
 `;
