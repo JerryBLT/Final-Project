@@ -8,6 +8,8 @@ import Header from "./components/Header";
 
 // Styled Components
 const AppContainer = styled.div`
+  min-height: 100vh;
+  width: 100vw;
   display: flex;
   background: pink;
   min-height: 100vh;
