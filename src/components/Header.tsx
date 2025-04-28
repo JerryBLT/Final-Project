@@ -32,7 +32,7 @@ export default function Header() {
     <HeaderContainer>
       <Logo>
         <FaCocktail />
-        Cocktail
+        Cocktail Companion
       </Logo>
     </HeaderContainer>
   );

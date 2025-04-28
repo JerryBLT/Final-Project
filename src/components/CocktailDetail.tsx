@@ -21,7 +21,7 @@ const CocktailDetail = ({ cocktailId }: CocktailDetailProps) => {
     if (idDrink) {
       getCocktailById(idDrink)
         .then((data) => {
-          setCocktail(data.drinks[0]);
+          setCocktail(data);
           setLoading(false);
         })
         .catch((error) => {
