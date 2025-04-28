@@ -4,6 +4,7 @@ import Header from "./compartment/Header";
 import CocktailCard from "./components/CocktailCard";
 import Modal from "./components/Modal";
 import { Cocktail } from "./interfaces/Cocktail";
+import SearchBar from "./components/SearchBar";
 
 // Styled Components
 const AppContainer = styled.div`
@@ -20,12 +21,22 @@ const CardGrid = styled.div`
   flex-wrap: wrap;
   gap: 2px;
   justify-content: center;
+  margin-top: 5vh;
 `;
+
+
 
 export default function App() {
   const [data, setData] = useState<Cocktail[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+
+  function handleSearchResults(drinks: Cocktail[]) {
+    setData(drinks);
+    setSelectedId(null);
+    setModalOpen(false);
+  }
+
 
   useEffect(() => {
     async function fetchData() {
@@ -53,6 +64,7 @@ export default function App() {
       <Header />
       <AppContainer>
         <MainContent>
+          <SearchBar onResults={handleSearchResults} />
           <CardGrid>
             {data.map((cocktail) => (
               <CocktailCard key={cocktail.idDrink} data={cocktail} onClick={handleCardClick} />

@@ -36,7 +36,7 @@ const ButtonWrapper = styled.div`
 const DrinkSearchWrapper = styled.div`
     display: flex;
     flex-direction: row;
-    margin: 2vh 0 0 2vh;
+    margin: 2vh 0 0 5vh;
 `
 
 const DrinkSearch = styled.input`
@@ -69,7 +69,7 @@ export default function SearchBar({ onResults }: { onResults: (d: Cocktail[]) =>
             searchType === 'ingredient'
                 ? await searchByIngredient(value)
                 : await searchByName(value);
-
+            console.log("fetching", searchType, value); console.log("RESULTS:", drinks);
         onResults(drinks);}
     }
 

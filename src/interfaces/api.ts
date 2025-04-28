@@ -1,5 +1,5 @@
 // This file contains the API calls to TheCocktailDB
-
+import { Cocktail } from "./Cocktail";
 
 // This function fetches a single cocktail by its ID
 export const getCocktailById = async (id: string) => {
@@ -8,19 +8,23 @@ export const getCocktailById = async (id: string) => {
     return data;
   };
 
-//This function fetches all cocktails containing a given ingredient
-export const searchByIngredient = async (ingredient: string) => {
-    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`);
-    const data = await response.json();
-    return data;
-}
+// src/interfaces/api.ts
+export const searchByIngredient = async (q: string): Promise<Cocktail[]> => {
+    const res   = await fetch(
+        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${q}`
+    );
+    const { drinks } = await res.json();
+    return drinks ?? [];        // ←  always an array
+};
 
-//This function fetches a single cocktail by its name
-export const searchByName = async (name: string) => {
-    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`);
-    const data = await response.json();
-    return data;
-}
+export const searchByName = async (q: string): Promise<Cocktail[]> => {
+    const res   = await fetch(
+        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${q}`
+    );
+    const { drinks } = await res.json();
+    return drinks ?? [];
+};
+
 
 //This function fetches a random cocktail
 export const getRandomCocktail = async () => {
