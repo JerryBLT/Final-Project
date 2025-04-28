@@ -7,15 +7,18 @@
  import styled from 'styled-components';
  
  const CocktailDetail = () => {
+    // Get the cocktail ID from the URL parameters using the useParams hook
      const { idDrink } = useParams<{ idDrink: string }>();
+    // Init state variables for cocktail(null by default) and loading(true by default)
      const [cocktail, setCocktail] = useState<Cocktail | null>(null);
      const [loading, setLoading] = useState(true);
- 
+    // Fetch the cocktail details by ID when the component mounts or when idDrink changes
      useEffect(() => {
          if (idDrink) {
+            // if idDrink is not null, fetch the cocktail details
              getCocktailById(idDrink)
                  .then((data) => {
-                     setCocktail(data);
+                     setCocktail(data.drinks[0]);
                      setLoading(false);
                  })
                  .catch((error) => {
@@ -24,12 +27,14 @@
                  });
          }
      }, [idDrink]);
+    // Render loading state or cocktail not found if cocktail is null
      if (loading) {
          return <LoadingContainer>Loading...</LoadingContainer>;
      }
      if (!cocktail) {
          return <LoadingContainer>Cocktail not found</LoadingContainer>;
      }
+     // Otherwise, render the cocktail details including name, image, instructions, and ingredients
      return (
          <CocktailContainer>
              <DrinkName>{cocktail.strDrink}</DrinkName>
@@ -53,6 +58,7 @@
      );
  }
  
+ // Export the CocktailDetail component for use in other parts of the application
  export default CocktailDetail;
  
  // Styled components for the CocktailDetail component
