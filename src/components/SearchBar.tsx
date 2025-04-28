@@ -28,7 +28,7 @@ const StyledButton = styled.button<{$active: boolean}>`
 const ButtonWrapper = styled.div`
     display: flex;
     align-items: center;   
-    gap: 0.5rem;
+    gap: 3px;
     margin: 2vh 0 0 0;
     
 `;
