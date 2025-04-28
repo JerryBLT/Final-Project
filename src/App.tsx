@@ -1,38 +1,69 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
-import { Cocktail } from './interfaces/Cocktail';
-import CocktailDetail from './components/CocktailDetail';
-import CocktailList from './components/CocktailList';
-import Header from './components/Header';
-import SearchBar from './components/SearchBar';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import Header from "./compartment/Header";
+import CocktailCard from "./components/CocktailCard";
+import Modal from "./components/Modal";
+import { Cocktail } from "./interfaces/Type";
 
-// hi guys, i was using the routes below for testing purposes, feel free to change them
-function App() {
-    const [cocktails, setCocktails] = useState<Cocktail[]>([]);
-    const handleResults = (result: any) => {
-        if (result && Array.isArray(result)) {
-          // If already an array, just use it
-          setCocktails(result);
-        } else if (result && Array.isArray(result.drinks)) {
-          // If it's an object with drinks array inside, extract drinks
-          setCocktails(result.drinks);
-        } else {
-          // If no results, set empty
-          setCocktails([]);
-        }
-    };
-    return (
-        <Router>
-            <Header />
-            <Routes>
-                <Route path="/" element= {<div>
-                    <SearchBar onResults = {handleResults} />
-                    <CocktailList cocktails={cocktails} />
-                </div>} />
-                <Route path="/cocktail/:idDrink" element={<CocktailDetail />} />
-            </Routes>
-        </Router>
-    );
+// Styled Components
+const AppContainer = styled.div`
+  display: flex;
+  background: pink;
+`;
+
+const MainContent = styled.div`
+  padding: 10px;
+`;
+
+const CardGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  justify-content: center;
+`;
+
+export default function App() {
+  const [data, setData] = useState<Cocktail[]>([]);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      const rawData = await fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail");
+      const results = await rawData.json();
+      setData(results.drinks);
+    }
+    fetchData()
+      .then(() => console.log("Yayy!! Data fetched successfully"))
+      .catch((e) => console.log("No!! This happened:" + e));
+  }, []);
+
+  function handleCardClick(id: string) {
+    setSelectedId(id);
+    setModalOpen(true);
+  }
+
+  function handleClose() {
+    setModalOpen(false);
+    setSelectedId(null);
+  }
+
+  return (
+    <>
+      <Header />
+      <AppContainer>
+        <MainContent>
+          <CardGrid>
+            {data.map((cocktail) => (
+              <CocktailCard key={cocktail.idDrink} data={cocktail} onClick={handleCardClick} />
+            ))}
+          </CardGrid>
+        </MainContent>
+        {/* Show Modal with CocktailDetail inside */}
+        {selectedId && (
+          <Modal open={modalOpen} onClose={handleClose} cocktailId={selectedId} />
+        )}
+      </AppContainer>
+    </>
+  );
 }
-
-export default App;
