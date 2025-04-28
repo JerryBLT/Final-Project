@@ -1,9 +1,7 @@
-//implemented by Jerry
-
 import styled from "styled-components";
 // library for the cocktail logo
 import { FaCocktail } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link } from "react-router"; 
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -74,7 +72,7 @@ export default function Header() {
         <FaCocktail />
         Cocktail
       </Logo>
-      <Nav>
+      {/* <Nav>
         <NavList>
           <NavItem>
             <NavLink to="/">Home</NavLink>
@@ -86,7 +84,7 @@ export default function Header() {
             <NavLink to="/about">About</NavLink>
           </NavItem>
         </NavList>
-      </Nav>
+      </Nav> */}
     </HeaderContainer>
   );
 }
