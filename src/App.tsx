@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Header from "./compartment/Header";
 import CocktailCard from "./components/CocktailCard";
 import Modal from "./components/Modal";
 import { Cocktail } from "./interfaces/Cocktail";
