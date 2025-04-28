@@ -1,34 +1,31 @@
-// This file contains the API calls to TheCocktailDB
-import { Cocktail } from "./Cocktail";
+import { Cocktail } from "./Cocktail";         // ↖ adjust if you move this file
 
-// This function fetches a single cocktail by its ID
-export const getCocktailById = async (id: string) => {
-    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
-    const data = await response.json();
-    return data;
-  };
+const BASE = "https://www.thecocktaildb.com/api/json/v1/1";
 
-// src/interfaces/api.ts
-export const searchByIngredient = async (q: string): Promise<Cocktail[]> => {
-    const res   = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${q}`
-    );
-    const { drinks } = await res.json();
-    return drinks ?? [];        // ←  always an array
-};
+/* ---------- tiny util that handles errors & JSON ---------- */
+async function fetchList(url: string): Promise<Cocktail[]> {
+    try {
+        const res = await fetch(url);
+        const { drinks } = await res.json();
 
-export const searchByName = async (q: string): Promise<Cocktail[]> => {
-    const res   = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${q}`
-    );
-    const { drinks } = await res.json();
-    return drinks ?? [];
-};
-
-
-//This function fetches a random cocktail
-export const getRandomCocktail = async () => {
-    const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`);
-    const data = await response.json();
-    return data;
+        return Array.isArray(drinks) ? drinks : [];             // normal path (also handles 0 matches)
+    } catch (err) {
+        console.error("CocktailDB error:", err);
+        return [];                          // network/bad-JSON fallback
+    }
 }
+
+/* ---------------- public helper functions ----------------- */
+export const searchByIngredient = (q: string) =>
+    fetchList(`${BASE}/filter.php?i=${encodeURIComponent(q)}`);
+
+export const searchByName = (q: string) =>
+    fetchList(`${BASE}/search.php?s=${encodeURIComponent(q)}`);
+
+export const getCocktailById = async (
+    id: string,
+): Promise<Cocktail | null> =>
+    (await fetchList(`${BASE}/lookup.php?i=${id}`))[0] ?? null;
+
+export const getRandomCocktail = async (): Promise<Cocktail | null> =>
+    (await fetchList(`${BASE}/random.php`))[0] ?? null;
