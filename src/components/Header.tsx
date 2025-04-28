@@ -74,19 +74,6 @@ export default function Header() {
         <FaCocktail />
         Cocktail
       </Logo>
-      <Nav>
-        <NavList>
-          <NavItem>
-            <NavLink to="/">Home</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/favorites">Favorites</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/about">About</NavLink>
-          </NavItem>
-        </NavList>
-      </Nav>
     </HeaderContainer>
   );
 }
