@@ -89,7 +89,7 @@ const TopSection = styled.div`
   align-items: flex-start;
   gap: 32px;
   flex-wrap: wrap;
-  margin-bottom: 2rem;
+  margin-bottom: 2px;
   @media (max-width: 900px) {
     flex-direction: column;
     align-items: center;
@@ -108,7 +108,7 @@ const DrinkImage = styled.img`
 const Details = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 2px;
 `;
 
 const DrinkName = styled.h1`
@@ -116,13 +116,13 @@ const DrinkName = styled.h1`
   text-align: center;
   color: #FF3131;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 5px;
   letter-spacing: 0.06em;
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 1.2rem;
-  margin: 1.2rem 0 0.5rem 0;
+  font-size:calc(2px + 2vw);
+  margin: 3px;
   color: black;
   letter-spacing: 0.03em;
 `;
@@ -131,8 +131,8 @@ const Instructions = styled.p`
   font-size: calc(2px + 2vw);
   background: white;
   border-radius: 8px;
-  padding: 1rem;
-  margin-top: 0.5rem;
+  padding: 3px;
+  margin-top: 4px;
   color: black;
 `;
 
