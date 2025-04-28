@@ -38,22 +38,28 @@
      return (
          <CocktailContainer>
              <DrinkName>{cocktail.strDrink}</DrinkName>
-             <DrinkImage src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+             <TopSection>
+                <DrinkImage src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+                <IngredientsSection>
+                <DrinkDetails>Ingredients</DrinkDetails>
+                <StyledList>
+                    {Array.from({ length: 15 }, (_, i) => {
+                    const ingredient = cocktail[`strIngredient${i + 1}` as keyof Cocktail];
+                    const measure = cocktail[`strMeasure${i + 1}` as keyof Cocktail];
+                    return ingredient ? (
+                        <StyledListItem key={i}>
+                            {measure} {ingredient}
+                        </StyledListItem>
+                        ) : null;
+                    })}
+                </StyledList>
+                </IngredientsSection>
+             </TopSection>
+
              <DrinkDetails>Instructions</DrinkDetails>
              <DrinkText>{cocktail.strInstructions}</DrinkText>
    
-             <DrinkDetails>Ingredients</DrinkDetails>
-             <StyledList>
-             {Array.from({ length: 15 }, (_, i) => {
-                 const ingredient = cocktail[`strIngredient${i + 1}` as keyof Cocktail];
-                 const measure = cocktail[`strMeasure${i + 1}` as keyof Cocktail];
-                 return ingredient ? (
-                 <StyledListItem key={i}>
-                     {measure} {ingredient}
-                 </StyledListItem>
-                 ) : null;
-             })}
-             </StyledList>
+             
          </CocktailContainer>
      );
  }
@@ -67,16 +73,44 @@
  `;
  
  const CocktailContainer = styled.div`
+     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+     margin: 1vh 1vw;
  `;
+
+ const TopSection = styled.div`
+    display: flex;
+
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap; 
+    margin-bottom: 20px;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+    }
+`;
+
+ const IngredientsSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 40%;
+`;
  
  // text and heading styles
  const DrinkName = styled.h1`
+      font-size: calc(8px + 2vw);   
+      text-align: center;
+      padding: 2vh 0;
+      letter-spacing: 0.1em;
  `;
  
  const DrinkDetails = styled.h2`
+      font-size: calc(6px + 1vw);   
  `;
  
  const DrinkText = styled.p`
+     font-size: calc(6px + 1vw);   
  `;
  
  // list styles
@@ -88,4 +122,9 @@
  
  // image styles
  const DrinkImage = styled.img`
+     border: 1px solid #FF3131;
+     border-radius: 8px;
+     padding: 10px;
+     margin: 5px;
+     max-width: 50%;
  `;
