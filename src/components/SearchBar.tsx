@@ -22,8 +22,13 @@ const StyledButton = styled.button<{$active: boolean}>`
     border: none;
     border-radius: 5px;
     margin: 0;
-    height: 3vh;
+    height: 5vh;
     width: 10vw;
+    font-size: 1.5vw;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    &:hover {
+        background-color: #d6d6d6;
+    }
 `
 
 const ButtonWrapper = styled.div`
@@ -31,7 +36,6 @@ const ButtonWrapper = styled.div`
     align-items: center;   
     gap: 3px;
     margin: 2vh 0 0 0;
-    
 `;
 
 const DrinkSearchWrapper = styled.div`
@@ -45,8 +49,9 @@ const DrinkSearchWrapper = styled.div`
 const DrinkSearch = styled.input`
     border-radius: 5px;
     border: none;
-    height: 100%;
-    width: 100%;
+    height: 5vh;
+    width: 20vw;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 `;
 
 const SubmitButton = styled.button`
@@ -56,6 +61,7 @@ const SubmitButton = styled.button`
     width: 100%;
     margin: auto 0 auto auto;
     background-color: white;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 `
 
 

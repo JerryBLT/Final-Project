@@ -1,4 +1,4 @@
-import { Cocktail } from "./Cocktail";         // ↖ adjust if you move this file
+import { Cocktail } from "./Cocktail";
 
 const BASE = "https://www.thecocktaildb.com/api/json/v1/1";
 

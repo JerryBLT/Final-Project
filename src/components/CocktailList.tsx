@@ -37,7 +37,7 @@ const ListContainer = styled.div`
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
-    margin-top: 2vh;
+    margin-top: 6vh;
     padding: 2vh 0;
     min-height: 100vh;
 `;

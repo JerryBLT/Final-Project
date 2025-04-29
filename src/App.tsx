@@ -24,7 +24,7 @@ const CardGrid = styled.div`
   flex-wrap: wrap;
   gap: 2px;
   justify-content: center;
-  margin-top: 5vh;
+  margin-top: 10vh;
   min-width: 100vw;
 `;
 
