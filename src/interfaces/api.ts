@@ -2,20 +2,18 @@ import { Cocktail } from "./Cocktail";         // ↖ adjust if you move this fi
 
 const BASE = "https://www.thecocktaildb.com/api/json/v1/1";
 
-/* ---------- tiny util that handles errors & JSON ---------- */
 async function fetchList(url: string): Promise<Cocktail[]> {
     try {
         const res = await fetch(url);
         const { drinks } = await res.json();
 
-        return Array.isArray(drinks) ? drinks : [];             // normal path (also handles 0 matches)
+        return Array.isArray(drinks) ? drinks : [];
     } catch (err) {
         console.error("CocktailDB error:", err);
-        return [];                          // network/bad-JSON fallback
+        return [];
     }
 }
 
-/* ---------------- public helper functions ----------------- */
 export const searchByIngredient = (q: string) =>
     fetchList(`${BASE}/filter.php?i=${encodeURIComponent(q)}`);
 
