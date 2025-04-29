@@ -8,13 +8,13 @@ import {Cocktail} from '../interfaces/Cocktail'
 const SearchBarWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #ffb347;
+    //background-color: #ffb347;
     height: 10vh;
     align-items: center;
     align-self: center;
     margin: 5vh auto auto auto;
     border-radius: 15px;
-    width: 30vw;
+    width: 20vw;
 `
 
 const StyledButton = styled.button<{$active: boolean}>`
@@ -22,7 +22,8 @@ const StyledButton = styled.button<{$active: boolean}>`
     border: none;
     border-radius: 5px;
     margin: 0;
-    height: 2vh;
+    height: 3vh;
+    width: 10vw;
 `
 
 const ButtonWrapper = styled.div`
@@ -35,21 +36,25 @@ const ButtonWrapper = styled.div`
 
 const DrinkSearchWrapper = styled.div`
     display: flex;
-    flex-direction: row;
-    margin: 2vh 0 0 5vh;
+    flex-direction: column;
+    margin: 2vh 0 0 0;
+    justify-content: center;
+    gap: 1vh;
 `
 
 const DrinkSearch = styled.input`
     border-radius: 5px;
     border: none;
-    height: 2vh;
+    height: 100%;
+    width: 100%;
 `;
 
 const SubmitButton = styled.button`
     border: none;
     border-radius: 5px;
-    height: 2vh;
-    margin: auto 0 auto 0.2vw;
+    height: 100%;
+    width: 100%;
+    margin: auto 0 auto auto;
     background-color: white;
 `
 
@@ -77,8 +82,8 @@ export default function SearchBar({ onResults }: { onResults: (d: Cocktail[]) =>
         <>
             <SearchBarWrapper>
                 <ButtonWrapper>
-                    <StyledButton $active={searchType==='drink'} onClick={() => setSearchType('drink')}>Search By Drink Name</StyledButton>
-                    <StyledButton $active={searchType==='ingredient'} onClick={() => setSearchType('ingredient')}>Search By Ingredient</StyledButton>
+                    <StyledButton $active={searchType==='drink'} onClick={() => setSearchType('drink')}>Cocktail</StyledButton>
+                    <StyledButton $active={searchType==='ingredient'} onClick={() => setSearchType('ingredient')}>Ingredient</StyledButton>
                 </ButtonWrapper>
                 <DrinkSearchWrapper>
                     <DrinkSearch  placeholder={searchType === 'ingredient' ? 'Enter An Ingredient' : 'Enter A Drink Name'} onChange={e => setValue(e.target.value)} />
