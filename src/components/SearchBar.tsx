@@ -8,7 +8,6 @@ import {Cocktail} from '../interfaces/Cocktail'
 const SearchBarWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    //background-color: #ffb347;
     height: 10vh;
     align-items: center;
     align-self: center;

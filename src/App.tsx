@@ -9,7 +9,6 @@ import Header from "./components/Header";
 // Styled Components
 const AppContainer = styled.div`
   min-height: 100vh;
-  width: 100vw;
   display: flex;
   background: pink;
   min-width: 100vw;
@@ -25,7 +24,8 @@ const CardGrid = styled.div`
   gap: 2px;
   justify-content: center;
   margin-top: 10vh;
-  min-width: 100vw;
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 
